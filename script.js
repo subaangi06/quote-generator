@@ -1,6 +1,8 @@
 // Get references to the DOM elements
 const quoteEl = document.getElementById('quote');
+const quoteAuthorEl = document.getElementById('author');
 const button = document.getElementById('new-quote');
+
 
 // Function to fetch a quote from the API
 async function getQuote() {
@@ -10,7 +12,8 @@ async function getQuote() {
         const data = await response.json();
 
         // Update the page with the new quote
-        quoteEl.textContent = `"${data.content}" — ${data.author}`;
+        quoteEl.textContent = `${data.content}`;
+        quoteAuthorEl.textContent = `- ${data.author}`;
     } catch (error) {
         // If something goes wrong
         quoteEl.textContent = "Oops! Could not fetch a quote :(";
